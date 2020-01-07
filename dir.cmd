@@ -1,0 +1,1 @@
+cmd.exe /k "cd c:\Users\Peter Dessev\Documents\C-Lang\Terminal Text Editor && cls" 	
