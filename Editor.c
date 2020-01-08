@@ -1,9 +1,7 @@
 #include "linkedlist/LinkedList.h" //linked lists
-
-#include <direct.h>
 #include <ncurses/curses.h>
+
 #include <ctype.h>
-#include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
 //#include <getopt.h> //add me when adding long arguments
@@ -33,13 +31,19 @@ linkedList *getFileContents(FILE *fp){
 int drawScreen(char *filename, FILE *fp){
     linkedList *FileText;
     linkedList *current;
+    char *extension = filename;
+    const char extDelim[2] = ".";
     int c;
     int line = 1;    
     initscr(); 
     getmaxyx(stdscr,row,col);
-
-    if(has_colors() == FALSE)
-	{	endwin();
+    
+    while(strchr(extension, '.') != extension){
+        extension = strchr(extension, '.');
+    }
+    
+    if(has_colors() == FALSE){	
+        endwin();
 		fprintf(stderr, "Your terminal does not support color\n");
 		exit(1);
 	}
@@ -55,9 +59,10 @@ int drawScreen(char *filename, FILE *fp){
     FileText = getFileContents(fp);
     current = FileText->next;
     
-
+    
     //addNode(current, 'f');
     for(int i = 0; i == i; i++){
+        
         if(line < (row - 4)){
             //printf("%c", current->letter);
             mvaddch(line, i, current->letter);
@@ -73,7 +78,6 @@ int drawScreen(char *filename, FILE *fp){
     }
 
     
-    getch();
     return 0;
 }
 

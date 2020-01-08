@@ -27,4 +27,6 @@ void addNode(linkedList *current, char input);
 
 linkedList *nextNode(linkedList *current);
 
+linkedList *prevNode(linkedList *current);
+
 #endif

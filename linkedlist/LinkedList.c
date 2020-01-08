@@ -82,3 +82,7 @@ void addNode(linkedList *current, char input){
 linkedList *nextNode(linkedList *current){
     return current->next ? current->next : NULL;
 }
+
+linkedList *prevNode(linkedList *current){
+    return current->prev->prev ? current->prev : NULL;
+}
