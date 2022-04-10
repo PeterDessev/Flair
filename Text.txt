@@ -1,6 +1,0 @@
-This is some 
-t
- e
-  x
-   t
-on a new line!
