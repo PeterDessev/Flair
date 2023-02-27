@@ -1,13 +1,23 @@
-#cat -e -t makefile
+CC=gcc
+CFLAGS=-c -Wall
+LDFLAGS=-lncurses
+SOURCES=editor.c\
+     linkedlist/linkedlist.c\
+     openedFile/openedFile.c\
+     types/languageC.c\
+     types/FileText.c
+     
+OBJECTS=$(SOURCES:.c=.o)
+EXECUTABLE=flair
 
-.RECIPEPREFIX := >
 
-LIBS = -lncurses
+all: $(SOURCES) $(EXECUTABLE) rm
 
-INCLUDE = linkedlist/linkedlist.c
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 
-a.exe: editor.c
->gcc $< $(LIBS) $(INCLUDE) -o $@
-
-clean:
->rm $(TARGETS)
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+	
+rm: 
+	rm $(OBJECTS)
