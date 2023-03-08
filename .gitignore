@@ -1,6 +1,8 @@
 /.vscode
+/build
 *.exe
 *.o
 *.txt
+!CMakeLists.txt
 *.cmd
 *.old.c

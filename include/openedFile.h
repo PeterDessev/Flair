@@ -2,7 +2,9 @@
 #define OPENEDFILE_H_
 
 #include <stdio.h>
-#include "../linkedlist/LinkedList.h"
+#include "LinkedList.h"
+
+#define PATH_MAX 255
 
 typedef struct openedFiles{
     int line;

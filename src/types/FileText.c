@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include <ncurses/curses.h>
+
 void initFileTxt(openedFile File){
     int row, col;
     linkedList *current;
