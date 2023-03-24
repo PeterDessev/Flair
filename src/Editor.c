@@ -1,11 +1,11 @@
-#include <ncurses/curses.h>
+#include <ncurses.h>
 
 #include <ctype.h>  //char stuff
 #include <stdbool.h>  //booleans and stuff
 #include <stdint.h>   //special ints
 #include <stdio.h>    //file io and stuff
 #include <unistd.h>   //POSIX api
-
+#include <string.h>
 
 #include "FileText.h"
 #include "languageC.h"
@@ -423,8 +423,14 @@ int main(int argc, char **argv) {
     if (opt == -1) {
         char input[PATH_MAX];
         printf("Enter name of file to open: \n");
-        scanf("%[^\n]s", input);
-        strcpy(currentFile.name, input);
+        if(!fgets(input, PATH_MAX - 1, stdin)){
+            printf("Error getting user input\n");
+            return 1;
+        }
+        // Remove newline from end of string
+        uint8_t inputLen = strlen(input) - 1;
+        input[inputLen] = 0;
+        strncpy(currentFile.name, input, inputLen);
     } else {
         while (opt != -1) {
             switch (opt) {
@@ -460,7 +466,7 @@ int main(int argc, char **argv) {
     }
 
     // set file properties
-    _getcwd(currentFile.fileDir, PATH_MAX);
+    getcwd(currentFile.fileDir, PATH_MAX);
 
     getFullPath(path, currentFile);
     strcpy(currentFile.fullPath, path);

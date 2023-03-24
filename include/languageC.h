@@ -3,7 +3,7 @@
 #include "LinkedList.h"
 #include "openedFile.h"
 
-#include <ncurses/curses.h>
+#include <curses.h>
 
 typedef struct myScreen{
     int row;

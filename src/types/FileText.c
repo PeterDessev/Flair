@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <ncurses/curses.h>
+#include <curses.h>
 
 void initFileTxt(openedFile File){
     int row, col;
