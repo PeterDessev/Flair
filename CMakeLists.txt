@@ -2,22 +2,22 @@ cmake_minimum_required(VERSION 3.10)
 
 project(Flair VERSION 1.0 LANGUAGES C)
 
+set(CURSES_INCLUDE_DIR "/clang64/include")
+set(CURSES_LIBRARIES "/clang64/bin/libncurses.a")
+
 find_package(Curses 
     REQUIRED)
 
-# add_library(CURSES SHARED IMPORTED)
-# set_target_properties(CURSES PROPERTIES IMPORTED_LOCATION /clang64/lib/lncurses.a)
-# set(CURSES_INCLUDE_DIR /clang64/include)
 
-message(STATUS "${CURSES_LIBRARIES}")
-message(STATUS "${CURSES_INCLUDE_DIR}")
+message("${CURSES_LIBRARIES}")
+message("${CURSES_INCLUDE_DIR}")
 
 add_executable(Flair
     src/Editor.c
     src/linkedlist/LinkedList.c
     src/openedFile/openedFile.c
-    src/types/FileText.c
-    src/types/languageC.c
+    src/languages/FileText.c
+    src/languages/languageC.c
 )
 
 target_include_directories(Flair
@@ -25,7 +25,7 @@ target_include_directories(Flair
         $<INSTALL_INTERFACE:include>
     PRIVATE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>   
-        ${CURSES_INCLUDE_DIR}   
+        "/clang64/include" 
 )
 
 target_link_libraries(Flair

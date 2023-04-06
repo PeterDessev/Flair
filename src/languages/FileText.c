@@ -1,4 +1,4 @@
-#include "FileText.h"
+#include "languages/FileText.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,8 +12,6 @@ void initFileTxt(openedFile File){
     initscr();
     werase(stdscr);
     getmaxyx(stdscr,row,col);
-    
-
     
     //Text Editor header
     for(int i = 0; i<col; i++){

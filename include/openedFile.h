@@ -15,4 +15,14 @@ typedef struct openedFiles{
     linkedList *content;
 } openedFile;
 
+void drawFile(openedFile File);
+
+void updateFile(openedFile File);
+
+void saveFile(openedFile File);
+
+void keyboardListener(openedFile File);
+
+char *getFileExtension(openedFile file);
+
 #endif
